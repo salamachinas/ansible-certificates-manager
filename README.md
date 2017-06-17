@@ -3,7 +3,7 @@ ansible-certificates-manager
 
 This role manage certificates
 
-[![Ansible Galaxy](https://img.shields.io/ansible/role/xxxxx.svg)](https://galaxy.ansible.com/salamachinas/certificates-manager/)
+[![Ansible Galaxy](https://img.shields.io/ansible/role/18528.svg)](https://galaxy.ansible.com/salamachinas/certificates-manager/)
 
 Requirements
 ------------
