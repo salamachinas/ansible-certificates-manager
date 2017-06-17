@@ -1,0 +1,28 @@
+---
+- name: "ensures {{ location }} dir exists"
+  file:
+      path: '{{ location }}'
+      state: directory
+      owner: '{{ location_owner }}'
+      group: '{{ location_group }}'
+      mode: '{{ location_mode }}'
+
+- name: make sure certificate is installed
+  copy:
+    content: '{{ item.certificate | b64decode }}'
+    dest: "{{ location }}/{{item.name}}.cert"
+    owner: '{{ certificate_owner }}'
+    group: '{{ certificate_group }}'
+    mode: '{{ certificate_mode }}'
+  with_items: '{{ certificates }}'
+  no_log: true
+
+- name: make sure key is installed
+  copy:
+    content: '{{ item.key | b64decode }}'
+    dest: "{{ location }}/{{item.name}}.key"
+    owner: '{{ key_owner }}'
+    group: '{{ key_group }}'
+    mode: '{{ key_mode }}'
+  with_items: '{{ certificates }}'
+  no_log: true

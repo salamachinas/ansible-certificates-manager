@@ -1,0 +1,13 @@
+---
+- name: test provision
+  hosts: all
+  roles:
+    - { role: ansible-certificates-manager }
+  vars:
+    certificates:
+      - name: foo.bar.com
+        key: YmFzZTY0IGVuY29kZWQgZm9vIGtleSBzdG9yZWQgaW4gdmF1bHQ=
+        certificate: YmFzZTY0IGVuY29kZWQgZm9vIGNlcnRpZmljYXRlIHN0b3JlZCBpbiB2YXVsdA==
+      - name: bar.foo.com
+        key: YmFzZTY0IGVuY29kZWQgYmFyIGtleSBzdG9yZWQgaW4gdmF1bHQ=
+        certificate: YmFzZTY0IGVuY29kZWQgYmFyIGNlcnRpZmljYXRlIHN0b3JlZCBpbiB2YXVsdA==

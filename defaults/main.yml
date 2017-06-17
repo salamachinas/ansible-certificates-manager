@@ -1,0 +1,19 @@
+---
+# certificates
+certificates: []
+
+# remove location
+location: /etc/ssl/ansible
+location_owner: root
+location_group: root
+location_mode: 0644
+
+# certificate
+certificate_owner: root
+certificate_group: root
+certificate_mode: 0644
+
+# key
+key_owner: root
+key_group: root
+key_mode: 0644

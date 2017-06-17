@@ -1,0 +1,3 @@
+tests/.vagrant
+tests/ansible.log
+tests/provision.retry
