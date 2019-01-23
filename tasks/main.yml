@@ -26,3 +26,14 @@
     mode: '{{ key_mode }}'
   with_items: '{{ certificates }}'
   no_log: true
+
+- name: make sure client certificate is installed
+  copy:
+    content: '{{ item.client_certificate | b64decode }}'
+    dest: "{{ location }}/{{item.name}}.cert"
+    owner: '{{ certificate_owner }}'
+    group: '{{ certificate_group }}'
+    mode: '{{ certificate_mode }}'
+  with_items: '{{ client_certificates }}'
+  no_log: true
+

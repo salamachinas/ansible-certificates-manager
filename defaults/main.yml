@@ -1,6 +1,7 @@
 ---
 # certificates
 certificates: []
+client_certificates: []
 
 # remove location
 location: /etc/ssl/ansible
