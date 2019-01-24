@@ -34,6 +34,9 @@ Example Playbook
       - name: bar.foo.com
         key: YmFzZTY0IGVuY29kZWQgYmFyIGtleSBzdG9yZWQgaW4gdmF1bHQ=
         certificate: YmFzZTY0IGVuY29kZWQgYmFyIGNlcnRpZmljYXRlIHN0b3JlZCBpbiB2YXVsdA==
+    client_certificates:
+      - name: client.bar.com
+        client_certificate: YmFzZTY0IGVuY29kZWQgY2xpZW50IGNlcnRpZmljYXRlIHN0b3JlZCBpbiB2YXVsdA==
 ```
 
 Tests
