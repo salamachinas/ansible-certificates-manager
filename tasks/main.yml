@@ -1,16 +1,36 @@
 ---
 - name: "ensures {{ location }} dir exists"
   file:
-      path: '{{ location }}'
-      state: directory
-      owner: '{{ location_owner }}'
-      group: '{{ location_group }}'
-      mode: '{{ location_mode }}'
+    path: '{{ location }}'
+    state: directory
+    owner: '{{ location_owner }}'
+    group: '{{ location_group }}'
+    mode: '{{ location_mode }}'
+
+- name: "ensures {{ item.custom_location }} dir exists"
+  file:
+    path: '{{ item.custom_location }}'
+    state: directory
+    owner: '{{ location_owner }}'
+    group: '{{ location_group }}'
+    mode: '{{ location_mode }}'
+  with_items: '{{ certificates }}'
+  when: item.custom_location is defined
+
+- name: "ensures {{ item.custom_location }} dir exists"
+  file:
+    path: '{{ item.custom_location }}'
+    state: directory
+    owner: '{{ location_owner }}'
+    group: '{{ location_group }}'
+    mode: '{{ location_mode }}'
+  with_items: '{{ client_certificates }}'
+  when: item.custom_location is defined
 
 - name: make sure certificate is installed
   copy:
     content: '{{ item.certificate | b64decode }}'
-    dest: "{{ location }}/{{item.name}}.cert"
+    dest: "{{ item.custom_location | default(location) }}/{{item.name}}.{{ item.custom_extension | default('cert')}}"
     owner: '{{ certificate_owner }}'
     group: '{{ certificate_group }}'
     mode: '{{ certificate_mode }}'
@@ -25,15 +45,15 @@
     group: '{{ key_group }}'
     mode: '{{ key_mode }}'
   with_items: '{{ certificates }}'
+  when: item.key is defined
   no_log: true
 
 - name: make sure client certificate is installed
   copy:
     content: '{{ item.client_certificate | b64decode }}'
-    dest: "{{ location }}/{{item.name}}.cert"
+    dest: "{{ item.custom_location | default(location) }}/{{item.name}}.{{item.custom_extension | default('cert')}}"
     owner: '{{ certificate_owner }}'
     group: '{{ certificate_group }}'
     mode: '{{ certificate_mode }}'
   with_items: '{{ client_certificates }}'
   no_log: true
-
