@@ -1,6 +1,11 @@
 ---
 # certificates
 certificates: []
+  # - name: bar.foo.com
+  #   key: YmFzZTY0IGVuY29kZWQgYmFyIGtleSBzdG9yZWQgaW4gdmF1bHQ=
+  #   certificate: YmFzZTY0IGVuY29kZWQgYmFyIGNlcnRpZmljYXRlIHN0b3JlZCBpbiB2YXVsdA==
+  #   custom_location: /var/www/html # Optional: By default: /etc/ssl/ansible
+  #   custom_extension: pem # Optional: By default: cert
 client_certificates: []
 
 # remove location
