@@ -4,22 +4,32 @@ certificates: []
   # - name: bar.foo.com
   #   key: YmFzZTY0IGVuY29kZWQgYmFyIGtleSBzdG9yZWQgaW4gdmF1bHQ=
   #   certificate: YmFzZTY0IGVuY29kZWQgYmFyIGNlcnRpZmljYXRlIHN0b3JlZCBpbiB2YXVsdA==
-  #   custom_location: /var/www/html # Optional: By default: /etc/ssl/ansible
-  #   custom_extension: pem # Optional: By default: cert
+  #   Optional varaibles. Users can define custom values on specific certificate or key
+  #   custom_location: /var/www/html
+  #   custom_extension: pem
+  #   custom_location_owner: www-data
+  #   custom_location_group: www-data
+  #   custom_location_mode: 644
+  #   custom_certificate_owner: www-data
+  #   custom_certificate_group: www-data
+  #   custom_certificate_mode: 644
+  #   custom_key_owner: www-data
+  #   custom_key_group: www-data
+  #   custom_key_mode: 644
 client_certificates: []
 
 # remove location
 location: /etc/ssl/ansible
 location_owner: root
 location_group: root
-location_mode: 0644
+location_mode: 644
 
 # certificate
 certificate_owner: root
 certificate_group: root
-certificate_mode: 0644
+certificate_mode: 644
 
 # key
 key_owner: root
 key_group: root
-key_mode: 0644
+key_mode: 644
